@@ -15,14 +15,19 @@ nav {
   font: 400 1.625rem/2rem Inter;
   font-size: 1em;
   padding: 2em;
+  padding-top: 1.8em;
 }
 nav .content_titulo {
-  display: flex;
   font-size: 1.6em;
-  margin-bottom: 1.3em;
+  margin-bottom: 0.8em;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 nav .content_titulo .imagen {
-  margin-right: 0.5em;
+  display: flex;
+  align-items: center;
+  margin-right: 0.1em;
 }
 nav .navItems {
   font-size: 1em;
@@ -80,6 +85,10 @@ nav .navItems .content_form .content_input input {
   background-color: transparent;
   border: none;
 }
+nav .navItems .content_form .content_input input:focus {
+  outline: none;
+  color: #aeaeae;
+}
 
 /* Main */
 main {
@@ -88,9 +97,8 @@ main {
   font-size: 14px;
   /* Titulo */
   /* noticias */
-}
-main .content_titulo {
-  margin-bottom: 1.5em;
+  /* Titulo de cada seccion */
+  /* Año nuevo & musica nueva*/
 }
 main .content_titulo h2 {
   font-size: 2.5em;
@@ -105,11 +113,11 @@ main .content_titulo hr {
 }
 main .content_noticias {
   font: normal;
-  padding: 0;
-  border: 1px solid #ddd;
+  padding: 2.5em 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1.8em;
+  border-bottom: 1px solid #3c3c3c;
 }
 main .content_noticias > article {
   display: flex;
@@ -117,7 +125,7 @@ main .content_noticias > article {
   justify-content: space-between;
 }
 main .content_noticias > article .imagen {
-  height: 300px;
+  height: 290px;
   border-radius: 5px;
   background-color: lightcoral;
 }
@@ -127,8 +135,108 @@ main .content_noticias > article .imagen img {
   border-radius: inherit;
   object-fit: cover;
 }
+main .content_noticias > article .text {
+  margin-bottom: 1em;
+}
+main .content_noticias > article .text > * {
+  letter-spacing: 1px;
+}
 main .content_noticias > article .text h3 {
+  font: 400 0.6875rem/0.875rem Inter;
+  color: #aeaeae;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+main .content_noticias > article .text .subtitulo1 {
   font: 400 0.75rem/1rem Inter;
+  font-size: 1.2em;
+  margin-bottom: 0.6em;
+}
+main .content_noticias > article .text .subtitulo2 {
+  font: 400 0.75rem/0.9375rem Inter;
+  color: #aeaeae;
+  font-size: 1.2em;
+}
+main .content_anioNuevo,
+main .content_musicaNueva,
+main .content_cancionesNuevasDestacadas {
+  padding-top: 2em;
+}
+main .tituloSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #3c3c3c;
+  margin-bottom: 1.5em;
+}
+main .tituloSection p {
+  font: 400 0.75rem/1rem Inter;
+  font-size: 1em;
+  color: #e8636e;
+}
+main .content_anioNuevo,
+main .content_musicaNueva {
+  /* Cards */
+}
+main .content_anioNuevo .content_cards,
+main .content_musicaNueva .content_cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 1.5em;
+}
+main .content_anioNuevo .content_cards .card,
+main .content_musicaNueva .content_cards .card {
+  height: 240px;
+  /* Imagen */
+  /* Texto */
+}
+main .content_anioNuevo .content_cards .card .imagen,
+main .content_musicaNueva .content_cards .card .imagen {
+  height: 80%;
+}
+main .content_anioNuevo .content_cards .card .imagen img,
+main .content_musicaNueva .content_cards .card .imagen img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 5px;
+}
+main .content_anioNuevo .content_cards .card .texto,
+main .content_musicaNueva .content_cards .card .texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font: 400 0.75rem/1rem Inter;
+  height: 20%;
+  padding-top: 0.3em;
+}
+main .content_anioNuevo .content_cards .card .texto p,
+main .content_musicaNueva .content_cards .card .texto p {
+  color: #aeaeae;
+}
+main .content_cancionesNuevasDestacadas .listaDeCanciones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1em 1.3em;
+}
+main .content_cancionesNuevasDestacadas .listaDeCanciones .card {
+  border: 1px solid lightcoral;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .content_cancionesNuevasDestacadas .listaDeCanciones .card .texto {
+  font: 400 0.75rem/1rem Inter;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+}
+main .content_cancionesNuevasDestacadas .listaDeCanciones .card .texto p {
+  color: #aeaeae;
 }
 
 /* 
