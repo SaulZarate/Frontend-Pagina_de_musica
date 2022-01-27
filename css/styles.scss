@@ -32,6 +32,10 @@ $caption-12bold: 700 0.75rem/1rem Inter;
 $caption-12regular: 400 0.75rem/1rem Inter; 
 $caption-12regular_u: 400 0.75rem/1.25rem Inter; 
 
+a{
+    color: inherit;
+    text-decoration: none;
+}
 body {
     font: $subtitle-26semibold;
     color: $white;
@@ -39,13 +43,12 @@ body {
     font-size: 14px;
 
     display: grid;
-    grid-template-columns: 19% 1fr;
+    grid-template-columns: 18% 1fr;
 }
 
 
 /* Nav */
 nav{
-    height: 1000px;
     background-color: $grey-3;
     font: $subtitle-22regular;
     font-size: 1em;
@@ -230,6 +233,7 @@ main{
     .content_musicaNueva{
         /* Cards */
         .content_cards{
+            /* overflow: hidden; */
             display: grid;
             grid-template-columns: repeat(5,1fr);
             column-gap: 1.5em;
@@ -262,6 +266,7 @@ main{
         }
     }
 
+    /* Canciones nuevas destacadas */
     .content_cancionesNuevasDestacadas{
         .listaDeCanciones {
             display: grid;
@@ -269,44 +274,48 @@ main{
             grid-template-rows: repeat(4,1fr);
             gap: 1em 1.3em;
             .card{
-                border: 1px solid lightcoral;
+                border-top: 1px solid $color_separador;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                padding-top: .5em;
+                height: 2.8em;
+                
                 .imagen{
-                    
-                    
+                    width: 4em;
+                    display: flex;
+                    align-items: center;
+                    img{
+                        border-radius: 5px;
+                        height: 100%;
+                        width: 100%;
+                        object-fit: contain;
+                        object-position: center;
+                    }
                 }
                 .texto{
                     font: $caption-12regular;
-                    /* display: flex;
-                    justify-content: space-between;
-                    align-items: center; */
+                    width: 100%;
+                    padding: 0 1em;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: start;
+                    h4{
+                        font-size: 1.1em;
+                        margin-bottom: .3em;
+                    }
                     p{
                         color: $grey-2  ;
+                    }
+                }
+                .boton{
+                    /* border: 1px solid cornflowerblue; */
+                    img{
+                        object-fit: contain;
+                        object-position: top;
                     }
                 }
             }
         }
     }
 }
-
-
-
-/* 
-$title-34bold: 700 2.125rem/2.5rem Inter; 
-$subtitle-26semibold: 600 1.625rem/2rem Inter; 
-$subtitle-26regular: 400 1.625rem/2rem Inter; 
-$subtitle-22regular: 400 1.625rem/2rem Inter; 
-$subtitle-24bold: 700 1.5rem/2rem Inter; 
-$body-17regular: 400 1.0625rem/1.375rem Inter; 
-$body-17bold: 700 1.0625rem/1.375rem Inter; 
-$body-13regular: 400 0.8125rem/1rem Inter; 
-$body-12regular: 400 0.75rem/0.9375rem Inter; 
-$body-11regular: 400 0.6875rem/0.875rem Inter; 
-$body-11semibold: 600 0.6875rem/0.875rem Inter; 
-$body-12semibold: 600 0.75rem/0.9375rem Inter; 
-$caption-12bold: 700 0.75rem/1rem Inter; 
-$caption-12regular: 400 0.75rem/1rem Inter; 
-$caption-12regular_u: 400 0.75rem/1.25rem Inter;  
-*/
