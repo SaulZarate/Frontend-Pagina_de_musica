@@ -53,7 +53,10 @@ nav{
     font: $subtitle-22regular;
     font-size: 1em;
     padding: 2em;
-    padding-top: 1.8em;
+    padding: {
+        top: 1.8em;
+        left: .8em;
+    };
 
     .content_titulo{
         font-size: 1.6em;
@@ -134,14 +137,12 @@ nav{
     }
 }
 
-
-
 /* Main */
 main{
     font: $title-34bold;
     padding: 2em;
     font-size: 14px;
-    
+    overflow: hidden;
     /* Titulo */
     .content_titulo{
         h2{
@@ -221,6 +222,7 @@ main{
         letter-spacing: .5px;
         border-bottom: 1px solid $color_separador;
         margin-bottom: 1.5em;
+        width: 100%;
         p{
             font: $caption-12regular;
             font-size: 1em;
@@ -233,15 +235,23 @@ main{
     .content_musicaNueva{
         /* Cards */
         .content_cards{
-            /* overflow: hidden; */
-            display: grid;
-            grid-template-columns: repeat(5,1fr);
-            column-gap: 1.5em;
+            width: 102%;
+            overflow-y: hidden;
+            overflow-x: auto;
+            white-space: nowrap;
+            /* Escondo el scrollBar */
+            &::-webkit-scrollbar {
+                height: 0;
+            }
             .card{
-                height: 240px;
+                height: 230px;
+                width: 190px;
+                margin-right: 1.5em;
+                display: inline-block;
                 /* Imagen */
                 .imagen{
                     height: 80%;
+                    width: 100%;
                     img{
                         height: 100%;
                         width: 100%;

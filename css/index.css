@@ -20,6 +20,7 @@ nav {
   font-size: 1em;
   padding: 2em;
   padding-top: 1.8em;
+  padding-left: 0.8em;
 }
 nav .content_titulo {
   font-size: 1.6em;
@@ -99,6 +100,7 @@ main {
   font: 700 2.125rem/2.5rem Inter;
   padding: 2em;
   font-size: 14px;
+  overflow: hidden;
   /* Titulo */
   /* noticias */
   /* Titulo de cada seccion */
@@ -175,6 +177,7 @@ main .tituloSection {
   letter-spacing: 0.5px;
   border-bottom: 1px solid #3c3c3c;
   margin-bottom: 1.5em;
+  width: 100%;
 }
 main .tituloSection p {
   font: 400 0.75rem/1rem Inter;
@@ -187,20 +190,29 @@ main .content_musicaNueva {
 }
 main .content_anioNuevo .content_cards,
 main .content_musicaNueva .content_cards {
-  /* overflow: hidden; */
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 1.5em;
+  width: 102%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  /* Escondo el scrollBar */
+}
+main .content_anioNuevo .content_cards::-webkit-scrollbar,
+main .content_musicaNueva .content_cards::-webkit-scrollbar {
+  height: 0;
 }
 main .content_anioNuevo .content_cards .card,
 main .content_musicaNueva .content_cards .card {
-  height: 240px;
+  height: 230px;
+  width: 190px;
+  margin-right: 1.5em;
+  display: inline-block;
   /* Imagen */
   /* Texto */
 }
 main .content_anioNuevo .content_cards .card .imagen,
 main .content_musicaNueva .content_cards .card .imagen {
   height: 80%;
+  width: 100%;
 }
 main .content_anioNuevo .content_cards .card .imagen img,
 main .content_musicaNueva .content_cards .card .imagen img {
