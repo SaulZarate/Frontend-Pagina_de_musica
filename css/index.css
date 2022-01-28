@@ -13,10 +13,6 @@ body {
   grid-template-columns: 18% 1fr;
 }
 
-.d-none {
-  display: none;
-}
-
 /* 
     --------------
     --------------
@@ -24,6 +20,49 @@ body {
     --------------
     --------------
 */
+/* Modal */
+.content_modal {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+}
+.content_modal .wrapper {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content_modal .wrapper::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.content_modal .wrapper .modal {
+  padding: 3em 4em;
+  border-radius: 10px;
+  background-color: #0f0f0f;
+  color: #ccc;
+}
+.content_modal .wrapper .modal h2 {
+  font: 400 1.625rem/2rem Inter;
+}
+.content_modal .wrapper .modal hr {
+  border-color: #3c3c3c;
+  width: 90%;
+  margin-top: 0.3em;
+  margin-bottom: 2em;
+}
+.content_modal .wrapper .modal div {
+  margin: auto;
+}
+
 /* Nav */
 nav {
   background-color: #252526;
@@ -148,7 +187,6 @@ main .content_noticias > article {
 main .content_noticias > article .imagen {
   height: 290px;
   border-radius: 5px;
-  background-color: lightcoral;
 }
 main .content_noticias > article .imagen img {
   width: 100%;
