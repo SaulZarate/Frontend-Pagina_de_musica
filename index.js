@@ -15,26 +15,21 @@ window.addEventListener('DOMContentLoaded', async () => {
     /* 
         Data
     */
-    const ListRecommendations = await getListRecommendations()
-    const newMusic = await getNewMusicTracks()
-    const listMusicTop = await getListArtistTop()
-    const topLatinos = await getTopPopLatinos()
-    const topArtistas = await getTopArtistas()
-
+    const data = await getData()
+    
     /* 
         Insert HTML
     */
     /* Top latino */
-    addImage(div_image_popLatino, topLatinos[0])
+    addImage(div_image_popLatino, data.topLatinos[0])
     /* Top Artista */
-    addImage(div_image_artista, topArtistas[0])
-
+    addImage(div_image_artista, data.topArtistas[0])
     /* Año nuevo */
-    addCardsToDOM(document.querySelector('.content_anioNuevo .content_cards'), ListRecommendations)
+    addCardsToDOM(document.querySelector('.content_anioNuevo .content_cards'), data.newYear)
     /* Musica nueva */
-    addCardsToDOM(document.querySelector('.content_musicaNueva .content_cards'), newMusic)
+    addCardsToDOM(document.querySelector('.content_musicaNueva .content_cards'), data.newMusic)
     /* Lista de canciones destacadas */
-    addListItemsToDOM(document.querySelector('.content_cancionesNuevasDestacadas .listaDeCanciones'), listMusicTop)
+    addListItemsToDOM(document.querySelector('.content_cancionesNuevasDestacadas .listaDeCanciones'), data.listTop)
 
     // Ocultar modal
     content_modal.style.display = 'none'
@@ -62,8 +57,15 @@ function addListItemsToDOM(div, data) {
     Create HTML 
 */
 function createImageOfNoticias(data) {
+    console.log(data)
     return `
-    <img src="${data.image}" alt="${data.title}">
+        <img src="${data.image}" alt="${data.title}">
+        <div>
+            <h3>${data.title}</h3>
+            <a href="${data.url}" target="_blank">
+                <img src="./icons/play-circle.svg" alt="icon play">
+            </a>
+        </div>
     `
 }
 function createCardsHorizontal(info) {
@@ -76,13 +78,15 @@ function createCardsHorizontal(info) {
 function createCard(data) {
     return `
     <div class="card">
-        <div class="imagen">
-            <img src="${data.image}" alt="${data.title}">
-        </div>
-        <div class="texto">
-            <h4>${data.title}</h4>
-            <p>${data.subtitle}</p>
-        </div>
+        <a href="${data.url}" target="_blank" >
+            <div class="imagen">
+                <img src="${data.image}" alt="${data.title}">
+            </div>
+            <div class="texto">
+                <h4>${data.title}</h4>
+                <p>${data.subtitle}</p>
+            </div>
+        </a>
     </div>
     `
 }
@@ -106,13 +110,38 @@ function createItem(data) {
         </div>
 
         <div class="boton">
-            <img src="./icons/more-horizontal.svg" alt="link">
+            <a href="${data.url}" target="_blank">
+                <img src="./icons/more-horizontal.svg" alt="link">    
+            </a>
         </div>
+        
     </div>
     `
 }
 
 
+/* 
+    Get Data
+*/
+async function getData(){
+    let data = getDataLocalStorage()
+    if(data == null){
+        const ListRecommendations = await getListRecommendations()
+        const newMusic = await getNewMusicTracks()
+        const listMusicTop = await getListArtistTop()
+        const topLatinos = await getTopPopLatinos()
+        const topArtistas = await getTopArtistas()
+        data = {
+            topLatinos,
+            topArtistas,
+            newYear: ListRecommendations,
+            newMusic,
+            listTop: listMusicTop
+        }
+        saveLocalStorage(data)
+    }
+    return data
+}
 /* 
     Get Data API
 */
@@ -265,8 +294,13 @@ async function getListArtistTop() {
 }
 
 /* 
-    TODO: Local Storage
+    Local Storage
 */
-/* function getDataLocalStorage(){
-    return localStorage.getItem('info') || null
-} */
+function getDataLocalStorage(){
+    const data = localStorage.getItem('info')
+    if (data == null) return null
+    return JSON.parse(data)
+}
+function saveLocalStorage(info){
+    localStorage.setItem('info',JSON.stringify(info))
+}
